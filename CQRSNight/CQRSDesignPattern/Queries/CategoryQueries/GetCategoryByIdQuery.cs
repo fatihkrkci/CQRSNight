@@ -1,10 +1,10 @@
 ﻿namespace CQRSNight.CQRSDesignPattern.Queries.CategoryQueries
 {
-    public class GetCategoryQuery
+    public class GetCategoryByIdQuery
     {
         public int CategoryId { get; set; }
 
-        public GetCategoryQuery(int categoryId)
+        public GetCategoryByIdQuery(int categoryId)
         {
             CategoryId = categoryId;
         }
