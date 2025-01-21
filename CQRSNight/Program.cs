@@ -1,5 +1,6 @@
 using CQRSNight.Context;
 using CQRSNight.CQRSDesignPattern.Handlers.CategoryHandlers;
+using CQRSNight.CQRSDesignPattern.Handlers.ProductHandlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,13 @@ builder.Services.AddScoped<RemoveCategoryCommandHandler>();
 builder.Services.AddScoped<UpdateCategoryCommandHandler>();
 builder.Services.AddScoped<GetCategoryByIdQueryHandler>();
 builder.Services.AddScoped<GetCategoryQueryHandler>();
+
+builder.Services.AddScoped<CreateProductCommandHandler>();
+builder.Services.AddScoped<RemoveProductCommandHandler>();
+builder.Services.AddScoped<UpdateProductCommandHandler>();
+builder.Services.AddScoped<GetProductByIdQueryHandler>();
+builder.Services.AddScoped<GetProductQueryHandler>();
+
 builder.Services.AddDbContext<CQRSContext>();
 
 builder.Services.AddControllersWithViews();
