@@ -1,6 +1,8 @@
 using CQRSNight.Context;
 using CQRSNight.CQRSDesignPattern.Handlers.CategoryHandlers;
 using CQRSNight.CQRSDesignPattern.Handlers.ProductHandlers;
+using CQRSNight.MediatorDesignPattern.Handlers;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +20,15 @@ builder.Services.AddScoped<UpdateProductCommandHandler>();
 builder.Services.AddScoped<GetProductByIdQueryHandler>();
 builder.Services.AddScoped<GetProductQueryHandler>();
 
+builder.Services.AddScoped<CreateCustomerCommandHandler>();
+builder.Services.AddScoped<RemoveCustomerCommandHandler>();
+builder.Services.AddScoped<UpdateCustomerCommandHandler>();
+builder.Services.AddScoped<GetCustomerByIdQueryHandler>();
+builder.Services.AddScoped<GetCustomerQueryHandler>();
+
 builder.Services.AddDbContext<CQRSContext>();
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 builder.Services.AddControllersWithViews();
 
